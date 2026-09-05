@@ -49,7 +49,10 @@ wildfire-housing-recovery/
 │   ├── trajectory_classification_example.py
 │   └── vegetation_measurement.py
 ├── examples/
-│   └── streetview_input_template.csv
+│   ├── streetview_input_template.csv
+│   ├── synthetic_pre.png
+│   ├── synthetic_post.png
+│   └── synthetic_expected_output.json
 ├── environment.yml
 └── README.md
 ```
@@ -83,8 +86,27 @@ Pass two to eight chronological images of the same building. The script returns 
 export ANTHROPIC_API_KEY="YOUR_KEY"
 python code/trajectory_classification_example.py \
   --images local_data/pre.jpg local_data/post.jpg \
-  --model MODEL_ID_AVAILABLE_TO_YOU
+  --model claude-opus-4-7
 ```
+
+### Run the minimal synthetic test
+
+The repository includes one original, computer-generated pre/post image pair for
+testing the classification interface without redistributing Google Street View
+content or exposing a real parcel. The fixture is for software testing only and
+was not used in the study. Run:
+
+```bash
+python code/trajectory_classification_example.py \
+  --images examples/synthetic_pre.png examples/synthetic_post.png \
+  --model claude-opus-4-7
+```
+
+The expected trajectory is `rebuilt_improved`; confidence and explanatory text
+may vary between API responses. The expected output schema is recorded in
+`examples/synthetic_expected_output.json`. The two synthetic images were created
+for this repository, contain no third-party imagery or location data, and may be
+reused for testing without restriction.
 
 ### Measure vegetation change
 
