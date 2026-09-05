@@ -59,6 +59,14 @@ wildfire-housing-recovery/
 
 ## Installation
 
+### System requirements
+
+The command-line workflow is designed for Windows, macOS and Linux and was
+checked on Windows 11. It uses Python 3.11 with the dependency versions listed
+in `environment.yml`. No non-standard hardware is required; a CUDA-capable GPU
+is optional for faster vegetation segmentation. Installation typically takes
+5–15 minutes on a standard desktop with a broadband connection.
+
 ```bash
 conda env create -f environment.yml
 conda activate wildfire-housing-recovery
@@ -113,6 +121,9 @@ python code/trajectory_classification_example.py \
 The expected trajectory is `empty_lot`; confidence and explanatory text may vary
 between API responses. The expected output schema is recorded in
 `examples/streetview_expected_output.json`.
+
+After installation, the two-image classification demo typically completes in
+under one minute, excluding variation in hosted API response time.
 
 Street View imagery: © Google. Displayed here as a research example and subject
 to the Google Maps Platform Terms of Service.
