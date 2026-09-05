@@ -1,0 +1,3 @@
+building_id,panoid,heading,capture_date,is_pre_fire
+example_building,PANO_ID_PRE_FIRE,180,YYYY-MM-DD,true
+example_building,PANO_ID_POST_FIRE,180,YYYY-MM-DD,false
