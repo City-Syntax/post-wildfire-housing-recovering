@@ -4,7 +4,7 @@
 
 Code accompanying the study *Unequal post-wildfire housing recovery follows income and insurance gradients*.
 
-**Collaborating institutions:** Massachusetts Institute of Technology (MIT), National University of Singapore (NUS), Southeast University, and Tongji University.
+**Collaborating institutions:** Southeast University, Massachusetts Institute of Technology (MIT), National University of Singapore (NUS), Texas Tech University, Chongqing University, and Tongji University.
 
 Wildfire recovery is often measured through aggregate losses or reconstruction totals. These measures can obscure where housing remains absent, where rebuilding changes the built environment, and which communities regain functioning housing most readily. This project transforms longitudinal Street View imagery into building-level recovery trajectories and connects visible reconstruction and vegetation change with neighborhood socioeconomic, environmental, credit, assistance, and insurance conditions.
 
