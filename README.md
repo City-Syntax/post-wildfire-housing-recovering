@@ -1,4 +1,4 @@
-# Post-wildfire housing recovery
+# post-wildfire-housing-recovering
 
 > A scalable building-level observatory of how communities rebuild after wildfire.
 
