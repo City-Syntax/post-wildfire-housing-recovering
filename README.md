@@ -50,9 +50,9 @@ wildfire-housing-recovery/
 │   └── vegetation_measurement.py
 ├── examples/
 │   ├── streetview_input_template.csv
-│   ├── synthetic_pre.png
-│   ├── synthetic_post.png
-│   └── synthetic_expected_output.json
+│   ├── streetview_pre_fire.png
+│   ├── streetview_post_fire.png
+│   └── streetview_expected_output.json
 ├── environment.yml
 └── README.md
 ```
@@ -89,24 +89,33 @@ python code/trajectory_classification_example.py \
   --model claude-opus-4-7
 ```
 
-### Run the minimal synthetic test
+### Run the minimal Street View test
 
-The repository includes one original, computer-generated pre/post image pair for
-testing the classification interface without redistributing Google Street View
-content or exposing a real parcel. The fixture is for software testing only and
-was not used in the study. Run:
+The repository includes one real pre- and post-fire image pair from the
+longitudinal examples above. It provides a minimal input for checking the
+classification interface.
+
+<table>
+  <tr>
+    <td width="50%" valign="top"><strong>Pre-fire (2016)</strong><br><img src="examples/streetview_pre_fire.png" width="100%" alt="Pre-fire Street View image showing the original building"></td>
+    <td width="50%" valign="top"><strong>Post-fire (2023)</strong><br><img src="examples/streetview_post_fire.png" width="100%" alt="Post-fire Street View image showing the parcel remaining an empty lot"></td>
+  </tr>
+</table>
+
+Run:
 
 ```bash
 python code/trajectory_classification_example.py \
-  --images examples/synthetic_pre.png examples/synthetic_post.png \
+  --images examples/streetview_pre_fire.png examples/streetview_post_fire.png \
   --model claude-opus-4-7
 ```
 
-The expected trajectory is `rebuilt_improved`; confidence and explanatory text
-may vary between API responses. The expected output schema is recorded in
-`examples/synthetic_expected_output.json`. The two synthetic images were created
-for this repository, contain no third-party imagery or location data, and may be
-reused for testing without restriction.
+The expected trajectory is `empty_lot`; confidence and explanatory text may vary
+between API responses. The expected output schema is recorded in
+`examples/streetview_expected_output.json`.
+
+Street View imagery: © Google. Displayed here as a research example and subject
+to the Google Maps Platform Terms of Service.
 
 ### Measure vegetation change
 
