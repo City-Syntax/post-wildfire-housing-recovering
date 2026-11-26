@@ -1,0 +1,30 @@
+[
+  [
+    "Indicator",
+    "Data period",
+    "Numerator",
+    "Denominator",
+    "Analytical role"
+  ],
+  [
+    "Aggregate non-renewal",
+    "2020–2023",
+    "Reported total non-renewed counts",
+    "New + renewed + total non-renewed counts",
+    "Broader local insurance-market context in the original analysis"
+  ],
+  [
+    "Pre-fire insurer-initiated non-renewal",
+    "Calendar year immediately preceding each fire",
+    "Insurer-initiated non-renewed counts",
+    "Renewed + insurer-initiated non-renewed + policyholder-initiated non-renewed counts",
+    "Supplementary analysis of insurer-initiated decisions"
+  ],
+  [
+    "Pre-fire policyholder-initiated non-renewal",
+    "Calendar year immediately preceding each fire",
+    "Policyholder-initiated non-renewed counts",
+    "Renewed + insurer-initiated non-renewed + policyholder-initiated non-renewed counts",
+    "Separate and joint examination of policyholder-initiated actions"
+  ]
+]

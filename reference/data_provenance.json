@@ -1,0 +1,139 @@
+[
+  {
+    "package_path": "data/processed/frozen_sample.parquet",
+    "sha256": "5c8eb47c30a852b1eac2e211fc519516a733e179a10cecdd391b3a8120cda375",
+    "action": "byte-for-byte copy"
+  },
+  {
+    "package_path": "data/processed/building_inventory.parquet",
+    "sha256": "f43b931bda1adde1f000417db6850038c0188de2ed95a759f86cd524aa7c91ab",
+    "action": "column selection only; row order and values retained",
+    "columns": [
+      "crash_id",
+      "incident",
+      "state_fips",
+      "event_date",
+      "damage_level",
+      "structure_type",
+      "structure_category",
+      "lat",
+      "lon",
+      "year_built",
+      "pre_tract_med_HH_income",
+      "pre_pct_white_NH",
+      "pre_pct_Hispanic",
+      "pre_pct_below_poverty",
+      "pre_pct_owner_occupied",
+      "pre_pct_BA_or_higher",
+      "pre_pct_mobile_home",
+      "assessed_value_usd",
+      "mtbs_severity_code",
+      "fema_ihp_total_usd",
+      "j40_disadvantaged",
+      "ownership_class",
+      "county_fips",
+      "pre_tract_geoid"
+    ],
+    "rows": 56178
+  },
+  {
+    "package_path": "data/processed/legacy_analysis_frame.parquet",
+    "sha256": "ed42a20d847f104a91f49b7ca394a562d487617c0046c227730e3eb702882ea6",
+    "action": "column selection only; row order and values retained",
+    "columns": [
+      "crash_id",
+      "incident",
+      "state_fips",
+      "event_date",
+      "damage_level",
+      "structure_type",
+      "structure_category",
+      "lat",
+      "lon",
+      "year_built",
+      "building_age_at_fire",
+      "pre_tract_med_HH_income",
+      "pre_pct_white_NH",
+      "pre_pct_Hispanic",
+      "pre_pct_below_poverty",
+      "pre_pct_owner_occupied",
+      "pre_pct_BA_or_higher",
+      "pre_pct_mobile_home",
+      "assessed_value_usd",
+      "mtbs_severity_code",
+      "fema_ihp_total_usd",
+      "j40_disadvantaged",
+      "ownership_class",
+      "county_fips",
+      "pre_tract_geoid",
+      "latest_post_date",
+      "last_sale_date",
+      "last_sale_price",
+      "prior_sale_date",
+      "prior_sale_price",
+      "tract_med_HH_income",
+      "pre_log_HH_income",
+      "log_assessed_value",
+      "rebuilt_binary"
+    ],
+    "rows": 4639
+  },
+  {
+    "package_path": "data/processed/label_records.csv",
+    "sha256": "21b243b23caf53d0d2b8bffbbdf7cf9bb6f83f6bcd0c582ba9113d831d7ca714",
+    "action": "column selection only; row order and label values retained",
+    "columns": [
+      "crash_id",
+      "incident",
+      "trajectory",
+      "trajectory_confidence",
+      "judged_by"
+    ],
+    "rows": 14627
+  },
+  {
+    "package_path": "data/processed/all_vegetation_segformer.parquet",
+    "sha256": "361511766a9cab7a20381f3b936ac0864e2fa74cb08a74903238aa1972610360",
+    "action": "byte-for-byte copy"
+  },
+  {
+    "package_path": "data/processed/all_vegetation_segformer_per_building.parquet",
+    "sha256": "966fc50ba145af480b7eb30a1077b8d2731b8dd66e5ed75f15b48e80d124d575",
+    "action": "byte-for-byte copy"
+  },
+  {
+    "package_path": "data/processed/all_vegetation_hsv_per_building.parquet",
+    "sha256": "3e70cfb5e8266bce03d6293aef7f5e62e4aa90d80ab2ee05a01d572a4cf8caea",
+    "action": "byte-for-byte copy"
+  },
+  {
+    "package_path": "data/processed/forward_fire_risk_per_building.parquet",
+    "sha256": "6f172eb1120590673fec9f2df619d6cb66ccbbed433fbefccee0e6313c88f648",
+    "action": "byte-for-byte copy"
+  },
+  {
+    "package_path": "data/processed/policy_per_building.parquet",
+    "sha256": "8f3d9ae4a9e40b89a41153b5482a7adb70a3d036207fc12833869ec6b36fe5a9",
+    "action": "byte-for-byte copy"
+  },
+  {
+    "package_path": "data/processed/hmda_per_tract.parquet",
+    "sha256": "c55bd4fcf7b0af84bccc0a7f7f1655a7bb585330fc429b741453d79764a712f6",
+    "action": "byte-for-byte copy"
+  },
+  {
+    "package_path": "data/processed/insurance_proxy_per_tract.parquet",
+    "sha256": "f0648abeb9e46b78ba5ac5f9ad9e2846733b8b6dcbf9a3ce2ab13efd5adb319d",
+    "action": "byte-for-byte copy"
+  },
+  {
+    "package_path": "data/raw/cdi_2023/nonrenew_zip_2015_2021.xlsx",
+    "sha256": "e225867ebafb56a073e8049afaef2bb0cb45d7d6bc2cb46dabc988ea8e69b667",
+    "action": "byte-for-byte copy"
+  },
+  {
+    "package_path": "data/raw/cdi_2023/nonrenew_zip_2020_2023.xlsx",
+    "sha256": "316d0ee62f110f9f7f762f052c4e9bb09fb05cd6d9074a796b740247a8f0636d",
+    "action": "byte-for-byte copy"
+  }
+]

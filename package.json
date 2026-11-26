@@ -1,0 +1,7 @@
+{
+  "name": "wildfire-housing-recovery-reproduction",
+  "version": "1.0.0",
+  "private": true,
+  "description": "SVG export dependency for the original paper plotting workflow",
+  "dependencies": {"sharp": "0.35.5"}
+}

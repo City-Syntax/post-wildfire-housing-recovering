@@ -1,0 +1,80 @@
+[
+  [
+    "Variable",
+    "OR per 1 SD",
+    "95% CI",
+    "P"
+  ],
+  [
+    "Aggregate non-renewal measure (zip)",
+    "0.116",
+    "(0.057, 0.239)",
+    "< 0.001"
+  ],
+  [
+    "FAIR Plan exposure (zip)",
+    "0.385",
+    "(0.085, 1.740)",
+    "0.215"
+  ],
+  [
+    "HMDA denial rate (tract)",
+    "0.675",
+    "(0.389, 1.172)",
+    "0.163"
+  ],
+  [
+    "ACS insurance proxy (tract)",
+    "1.241",
+    "(0.637, 2.418)",
+    "0.527"
+  ],
+  [
+    "FEMA IHP funding (disaster)",
+    "1.661",
+    "(0.678, 4.069)",
+    "0.267"
+  ],
+  [
+    "CEJST disadvantaged community",
+    "1.748",
+    "(0.727, 4.205)",
+    "0.212"
+  ],
+  [
+    "Log tract household income",
+    "2.304",
+    "(0.658, 8.069)",
+    "0.192"
+  ],
+  [
+    "MTBS burn severity",
+    "0.822",
+    "(0.582, 1.162)",
+    "0.267"
+  ],
+  [
+    "Diagnostics",
+    "",
+    "",
+    ""
+  ],
+  [
+    "Buildings",
+    "2,475",
+    "",
+    ""
+  ],
+  [
+    "Fire incidents",
+    "22",
+    "",
+    ""
+  ],
+  [
+    "Pseudo R²",
+    "0.585",
+    "",
+    ""
+  ]
+]

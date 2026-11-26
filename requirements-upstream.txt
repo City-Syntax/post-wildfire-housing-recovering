@@ -1,0 +1,4 @@
+requests>=2.31
+anthropic>=0.49
+torch>=2.2
+transformers>=4.40

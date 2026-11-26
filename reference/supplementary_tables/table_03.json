@@ -1,0 +1,23 @@
+[
+  [
+    "Specification",
+    "β",
+    "95% CI",
+    "P",
+    "n"
+  ],
+  [
+    "Full model: seven demographic and structural controls",
+    "+1.37",
+    "(+0.78, +1.96)",
+    "< 0.001",
+    "4,161"
+  ],
+  [
+    "Parsimonious: structural controls only (assessed value, MTBS severity)",
+    "+0.69",
+    "(−0.05, +1.42)",
+    "0.066",
+    "4,161"
+  ]
+]

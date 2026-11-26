@@ -1,0 +1,20 @@
+[
+  {
+    "name": "cb_2022_us_county_500k",
+    "url": "https://www2.census.gov/geo/tiger/GENZ2022/shp/cb_2022_us_county_500k.zip",
+    "sha256": "4a2c23c5486916115137fed7e84a32a4dcfeae453d02840d3e3f1fd8efc3ba58",
+    "bytes": 11656552
+  },
+  {
+    "name": "cb_2022_06_tract_500k",
+    "url": "https://www2.census.gov/geo/tiger/GENZ2022/shp/cb_2022_06_tract_500k.zip",
+    "sha256": "5954ab90ceeef99feb6736879159dcf9a7cb1ba1d9de9038b4edc334676fa51a",
+    "bytes": 4291494
+  },
+  {
+    "name": "cb_2022_06_place_500k",
+    "url": "https://www2.census.gov/geo/tiger/GENZ2022/shp/cb_2022_06_place_500k.zip",
+    "sha256": "e46560934a2f85ba856460ff571848733f36a4ff8803cac434bab87e015bf983",
+    "bytes": 1401547
+  }
+]

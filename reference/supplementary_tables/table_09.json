@@ -1,0 +1,44 @@
+[
+  [
+    "Policy variable",
+    "OR per 1 SD",
+    "95% CI",
+    "P",
+    "n"
+  ],
+  [
+    "Cumulative non-renewal rate (zip, 2020–23)",
+    "0.10",
+    "(0.04, 0.28)",
+    "< 0.001",
+    "3,992"
+  ],
+  [
+    "HMDA mortgage denial rate (tract)",
+    "0.58",
+    "(0.50, 0.68)",
+    "< 0.001",
+    "4,242"
+  ],
+  [
+    "FAIR Plan share (zip, 2022)",
+    "0.34",
+    "(0.11, 1.08)",
+    "0.068",
+    "3,992"
+  ],
+  [
+    "Conventional-mortgage share (tract)",
+    "1.11",
+    "(0.82, 1.51)",
+    "0.498",
+    "4,242"
+  ],
+  [
+    "log(1 + FEMA IHP, per disaster)",
+    "1.02",
+    "(0.54, 1.93)",
+    "0.961",
+    "4,243"
+  ]
+]

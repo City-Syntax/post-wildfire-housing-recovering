@@ -1,14 +1,14 @@
-# post-wildfire-housing-recovering
+# Post-wildfire housing recovery
 
-> A scalable building-level observatory of how communities rebuild after wildfire.
+A building-level observatory of how communities rebuild after wildfire.
 
-Code accompanying the study *Unequal post-wildfire housing recovery follows income and insurance gradients*.
+Code and derived numerical data accompanying **Unequal post-wildfire housing recovery follows income and insurance gradients**.
 
-**Collaborating institutions:** National University of Singapore (NUS), Massachusetts Institute of Technology (MIT), Southeast University, Texas Tech University, Chongqing University, and Tongji University.
+**Collaborating institutions:** National University of Singapore, Massachusetts Institute of Technology, Southeast University, Texas Tech University, Chongqing University, and Tongji University.
 
-Wildfire recovery is often measured through aggregate losses or reconstruction totals. These measures can obscure where housing remains absent, where rebuilding changes the built environment, and which communities regain functioning housing most readily. This project transforms longitudinal Street View imagery into building-level recovery trajectories and connects visible reconstruction and vegetation change with neighborhood socioeconomic, environmental, credit, assistance, and insurance conditions.
+The workflow connects visible building recovery and streetscape vegetation change with neighborhood socioeconomic conditions, insurance, mortgage credit, assistance and recorded property transactions.
 
-The workflow is designed to reveal where recovery stalls, how rebuilding pathways diverge across communities, and which institutional conditions are associated with unequal recovery. By making these differences measurable at building and neighborhood scales, the project supports more targeted, risk-appropriate, and equitable post-disaster recovery planning.
+![Workflow](assets/workflow.svg)
 
 ## Longitudinal recovery examples
 
@@ -25,76 +25,112 @@ The longitudinal image sequences below illustrate the visible recovery outcomes 
   </tr>
 </table>
 
-## Workflow
+## Quick start
 
-<p align="center">
-  <img src="assets/workflow.svg" width="100%" alt="Workflow for observing and analyzing post-wildfire housing recovery">
-</p>
-
-The repository contains four focused analysis modules:
-
-1. retrieve an authorized Street View image from a panorama reference;
-2. classify the visible recovery trajectory from chronological images;
-3. measure streetscape vegetation with semantic segmentation; and
-4. estimate the rebuilding, upgrading and insurance-policy models used in the analysis.
-
-## Repository structure
-
-```text
-wildfire-housing-recovery/
-├── assets/
-├── code/
-│   ├── statistical_models.py
-│   ├── streetview_api_example.py
-│   ├── trajectory_classification_example.py
-│   └── vegetation_measurement.py
-├── examples/
-│   ├── streetview_input_template.csv
-│   ├── streetview_pre_fire.png
-│   ├── streetview_post_fire.png
-│   └── streetview_expected_output.json
-├── environment.yml
-└── README.md
-```
-
-## Installation
-
-### System requirements
-
-The command-line workflow is designed for Windows, macOS and Linux and was
-checked on Windows 11. It uses Python 3.11 with the dependency versions listed
-in `environment.yml`. No non-standard hardware is required; a CUDA-capable GPU
-is optional for faster vegetation segmentation. Installation typically takes
-5–15 minutes on a standard desktop with a broadband connection.
+The prepared-data analyses were run with Python 3.12. No model API calls or image downloads are made by these commands.
 
 ```bash
-conda env create -f environment.yml
-conda activate wildfire-housing-recovery
+python -m venv .venv
 ```
 
-## Usage
+Activate the environment on Windows PowerShell:
 
-### Retrieve a Street View image
-
-Supply a panorama reference obtained through your own authorized query.
-
-```bash
-export GOOGLE_MAPS_API_KEY="YOUR_KEY"
-python code/streetview_api_example.py \
-  --panoid PANO_ID_FROM_YOUR_OWN_QUERY \
-  --heading 180 \
-  --output local_data/example.jpg
+```powershell
+.venv\Scripts\Activate.ps1
 ```
 
-### Classify a recovery trajectory
-
-Pass two to eight chronological images of the same building. The script returns the trajectory, a confidence value and a brief visual rationale.
+On macOS/Linux:
 
 ```bash
-export ANTHROPIC_API_KEY="YOUR_KEY"
-python code/trajectory_classification_example.py \
-  --images local_data/pre.jpg local_data/post.jpg \
-  --model claude-opus-4-7
+source .venv/bin/activate
+```
+
+Install the numerical and plotting dependencies:
+
+```bash
+python -m pip install -r requirements.txt
+npm install
+```
+
+Node.js and Sharp are used for SVG-to-PNG export. The numerical analyses can run without Node.js.
+
+Run all numerical analyses:
+
+```bash
+python run.py all
+```
+
+Run all numerical analyses and statistical figures:
+
+```bash
+python run.py all --figures
+```
+
+Completed commands print their output directories. Figures are saved to **outputs/figures/** and formatted tables to **outputs/tables/**.
+
+## Run one result
+
+| Result | Command | Main outputs |
+|---|---|---|
+| Result 1: overall recovery | `python run.py 1` | Recovery counts, per-fire summaries and observation dates in `outputs/01_recovery_Figure1/` |
+| Result 2: income and rebuilding | `python run.py 2 --figures` | `Figure2.png`; income-group proportions and adjusted curves in `outputs/02_income_Figure2/` |
+| Figure 3: vegetation | `python run.py vegetation --figures` | `Figure3_vegetation.png`; trajectories in `outputs/02b_vegetation_Figure3/` |
+| Result 3: Table 1 models | `python run.py 3` | `outputs/tables/Table1.csv`; full coefficients and model samples in `outputs/03_models_Table1/` |
+| Result 4: insurance and finance | `python run.py 4 --figures` | `Figure4.png`; distributions, curves and coefficients in `outputs/04_insurance_Figure4/` |
+| Figure 5: transactions | `python run.py 5 --figures` | `Figure5.png`; transaction and tract-income records in `outputs/05_transactions_Figure5/` |
+| Supplementary analyses | `python run.py supplementary --figures` | Supplementary tables, Figures 1, 2, 3, 5 and 6, and sensitivity estimates |
+
+Result 1 exports numerical summaries and geographical source data. Named Python entry points are also available in `entries/`; for example, `python entries/02_Result2_Figure2.py` runs Result 2 and its figure.
+
+## Run a supplementary item
+
+```bash
+python run.py supplementary --item S14
+python run.py supplementary --item S16
+python run.py supplementary --item FigureS6 --figures
+python run.py supplementary --item Note9
+```
+
+Use `S` followed by the table number, `FigureS` followed by the figure number, or `Note9`. Related items sharing one computation are generated together. **RESULTS_INDEX.csv** provides the item-to-command mapping; **DATA_DICTIONARY.csv** describes input fields.
+
+## Read the results
+
+- `outputs/figures/`: statistical figures in PNG and, where available, PDF/SVG.
+- `outputs/tables/`: formatted Table 1 and supplementary tables as CSV.
+- `outputs/01_*` through `outputs/05_*`: full coefficients, model samples, distributions and prediction curves.
+- `outputs/supplementary/`: observation-window counts, structure/time sensitivity models, insurance definitions and leave-one-fire-out estimates.
+
+Runtime messages are stored in `logs/` when running all analyses.
+
+## Local illustration assets
+
+Vegetation curves are generated from the supplied measurements. To assemble the photographic panel of Figure 3 as well, provide the selected local segmentation examples and configure their directory:
+
+```bash
+python configure_local_assets.py /path/to/local_plot_assets
+python run.py vegetation --figures
+```
+
+With these assets configured, the command also generates the complete `Figure3.png`. The bulk Street View image collection remains separate from the numerical data. Existing illustrative examples and input templates in this repository remain available.
+
+## Image acquisition and measurement tools
+
+The original tools are retained for users preparing new image inputs. They operate on locally supplied images or authorized panorama references. Install their additional dependencies as needed:
+
+```bash
+python -m pip install -r requirements-upstream.txt
+```
+
+Retrieve an image using your own Google Maps API key:
+
+```bash
+python code/streetview_api_example.py --panoid PANO_ID --heading 180 --output local_data/example.jpg
+```
+
+Set `GOOGLE_MAPS_API_KEY` as an environment variable before running the downloader. For recovery classification, set `ANTHROPIC_API_KEY` and supply chronological images of the same building:
+
+```bash
+python code/trajectory_classification_example.py --images local_data/pre.jpg local_data/post.jpg --model claude-opus-4-7
 ```
 
 ### Run the minimal Street View test
@@ -128,34 +164,29 @@ under one minute, excluding variation in hosted API response time.
 Street View imagery: © Google. Displayed here as a research example and subject
 to the Google Maps Platform Terms of Service.
 
-### Measure vegetation change
-
-The primary workflow measures vegetation in every valid image and summarizes each building by the median pre-fire and post-fire fractions.
+Measure vegetation in locally supplied pre- and post-fire images:
 
 ```bash
-python code/vegetation_measurement.py \
-  --pre-images local_data/pre_1.jpg local_data/pre_2.jpg \
-  --post-images local_data/post_1.jpg local_data/post_2.jpg
+python code/vegetation_measurement.py --pre-images local_data/pre_1.jpg local_data/pre_2.jpg --post-images local_data/post_1.jpg local_data/post_2.jpg
 ```
 
-### Estimate the statistical models
+The original standalone `code/statistical_models.py` utility is also retained for prepared tables following its documented schema. Use `run.py` for the result-specific analyses with the supplied data.
 
-Run the baseline rebuilding model, the upgrading model and the joint policy model on a prepared building-level table.
+## Repository structure
 
-```bash
-python code/statistical_models.py \
-  --data local_data/analysis_data.parquet \
-  --output outputs
+```text
+code/          Numerical analyses and original image-processing utilities
+entries/       Named entry points for individual results and items
+plotting/      Figure-generation routines
+data/          Derived numerical inputs, source spreadsheets and boundaries
+reference/     Numerical fixtures, table formatting and plot configuration
+artwork/       Vector layout assets used by the plotting routines
+examples/      Original image-input templates and examples
+outputs/       Generated numerical results, tables and figures
 ```
 
-The prepared table must contain a unique fire identifier (`fire_id`), state FIPS code, one of the five documented trajectory labels, the seven baseline covariates, and the policy fields named in `code/statistical_models.py`. Both CSV and Parquet inputs are supported.
-
-On Windows PowerShell, set API keys with `$env:GOOGLE_MAPS_API_KEY="YOUR_KEY"` and `$env:ANTHROPIC_API_KEY="YOUR_KEY"`.
-
-## Input data
-
-The scripts operate on locally supplied imagery and prepared analytical tables. Street View imagery must be accessed through the Google Maps Platform and used in accordance with the applicable terms. API credentials should be stored as environment variables and should never be committed to the repository.
+Input datasets are identified by their hashes and cohort definitions in **data/README.md**. Model-specific samples are exported with the coefficient tables. Machine-specific configuration, API credentials and environment folders are excluded from version control. The manuscript, reviewer responses and supplementary document are not included.
 
 ## Project team
 
-[City Syntax](https://github.com/City-Syntax)
+[City Syntax Lab](https://github.com/City-Syntax)

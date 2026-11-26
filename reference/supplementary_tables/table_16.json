@@ -1,0 +1,26 @@
+[
+  [
+    "Adjustment framework",
+    "Non-renewal measure",
+    "Buildings",
+    "Fire events",
+    "OR (95% CI)",
+    "P"
+  ],
+  [
+    "Table 1 covariates + fire-event fixed effects",
+    "Insurer-initiated",
+    "3,820",
+    "15",
+    "0.577 (0.353–0.945)",
+    "0.032"
+  ],
+  [
+    "Table 1 covariates + fire-event fixed effects, both initiators entered jointly",
+    "Insurer-initiated",
+    "3,820",
+    "15",
+    "0.573 (0.345–0.952)",
+    "0.034"
+  ]
+]

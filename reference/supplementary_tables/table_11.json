@@ -1,0 +1,65 @@
+[
+  [
+    "Sample",
+    "Actual-time term",
+    "n",
+    "G",
+    "OR",
+    "95% CI",
+    "P"
+  ],
+  [
+    "All classifiable buildings",
+    "Not added",
+    "4,143",
+    "33",
+    "3.95",
+    "2.18–7.17",
+    "<0.001"
+  ],
+  [
+    "All classifiable buildings",
+    "Cubic spline",
+    "4,143",
+    "33",
+    "2.40",
+    "1.22–4.72",
+    "0.013"
+  ],
+  [
+    "Single-family only",
+    "Not added",
+    "3,872",
+    "31",
+    "3.46",
+    "1.89–6.33",
+    "<0.001"
+  ],
+  [
+    "Single-family only",
+    "Cubic spline",
+    "3,872",
+    "31",
+    "2.12",
+    "1.10–4.06",
+    "0.026"
+  ],
+  [
+    "Mobile and motor homes excluded",
+    "Not added",
+    "3,905",
+    "31",
+    "3.70",
+    "2.06–6.66",
+    "<0.001"
+  ],
+  [
+    "Mobile and motor homes excluded",
+    "Cubic spline",
+    "3,905",
+    "31",
+    "2.27",
+    "1.21–4.27",
+    "0.012"
+  ]
+]
