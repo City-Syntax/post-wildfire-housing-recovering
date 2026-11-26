@@ -1,6 +1,6 @@
 """Recompute and draw supplementary numerical figures in their original styles."""
 from pathlib import Path
-import ast,argparse,json,sys,zipfile,shutil
+import ast,argparse,json,sys,zipfile,shutil,contextlib,io
 import numpy as np
 import pandas as pd
 import matplotlib
@@ -90,11 +90,13 @@ def run3(stage,out):
 
 def run5(out):
     from supplementary import structure_and_time
-    structure_and_time();df=pd.read_csv(ROOT/'outputs/supplementary/Table_S11_structure_models_full.csv');df['cohort']=df.Sample;df['time_label']=df['Actual-time term'];df.to_csv(out/'structure_type_model_results.csv',index=False)
+    with contextlib.redirect_stdout(io.StringIO()):structure_and_time()
+    df=pd.read_csv(ROOT/'outputs/supplementary/Table_S11_structure_models_full.csv');df['cohort']=df.Sample;df['time_label']=df['Actual-time term'];df.to_csv(out/'structure_type_model_results.csv',index=False)
     tree=ast.parse((ROOT/'plotting/original/draw_supplementary5.py').read_text(encoding='utf8'))
     for n in tree.body:
         if isinstance(n,ast.Assign) and any(isinstance(t,ast.Name) and t.id=='WORK' for t in n.targets):n.value=ast.parse('Path('+repr(str(out))+')',mode='eval').body
-    exec(compile(ast.fix_missing_locations(tree),'original_supplementary5_drawing','exec'),{'__file__':str(ROOT/'plotting/original/draw_supplementary5.py')})
+    with contextlib.redirect_stdout(io.StringIO()):
+        exec(compile(ast.fix_missing_locations(tree),'original_supplementary5_drawing','exec'),{'__file__':str(ROOT/'plotting/original/draw_supplementary5.py')})
     for ext in ['png','pdf','svg']:shutil.copy2(out/('SupplementaryFigure5_updated.'+ext),out/('SupplementaryFigure5.'+ext))
     from finish_layout import align_vector_text
     from render_original import render_svg
@@ -107,10 +109,15 @@ def main():
         print('Supplementary Figure',n,flush=True);plt.rcdefaults();plt.rcParams.update({'font.family':'Arial','font.size':9,'axes.linewidth':.6,'axes.spines.top':False,'axes.spines.right':False,'xtick.major.width':.6,'ytick.major.width':.6,'pdf.fonttype':42,'ps.fonttype':42,'svg.fonttype':'none'})
         e=original_supp_functions(stage,out)
         if n=='1':run1(out);stem=None
-        elif n=='2':geometry(stage);e['fig_s4'](frame());stem='figS4_zip_insurance_map'
+        elif n=='2':
+            geometry(stage)
+            with contextlib.redirect_stdout(io.StringIO()):e['fig_s4'](frame())
+            stem='figS4_zip_insurance_map'
         elif n=='3':run3(stage,out);stem=None
         elif n=='5':run5(out);stem=None
-        else:e['fig_s6']();stem='figS6_hsv_vs_segformer'
+        else:
+            with contextlib.redirect_stdout(io.StringIO()):e['fig_s6']()
+            stem='figS6_hsv_vs_segformer'
         if stem:
             for ext in ['png','pdf']:shutil.copy2(out/(stem+'.'+ext),out/(f'SupplementaryFigure{n}.'+ext))
         from finish_layout import publish

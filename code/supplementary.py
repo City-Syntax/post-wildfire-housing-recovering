@@ -173,7 +173,8 @@ def descriptive_tables():
         row=[expected[0]]
         for v,t in zip(stats,expected[1:]):
             precision=len(t.split('.')[1]) if '.' in t else 0
-            row.append(f'{v:,.{precision}f}')
+            separator=',' if ',' in t else ''
+            row.append(format(v,f'{separator}.{precision}f'))
         rows.append(row)
     rows.append(ref[19])
     labels={'empty_lot':'Empty lot','rebuilt_equal':'Rebuilt equal','rebuilt_improved':'Rebuilt improved','obscured':'Obscured','rebuilt_degraded':'Rebuilt degraded'}
@@ -219,6 +220,9 @@ def descriptive_tables():
 
 def supplementary():
     # Each step recomputes from numerical inputs. Reference tables are only assertion targets.
+    from main_results import result1
+    result1()
+    vegetation()
     structure_and_time()
     composition_windows_coverage()
     insurer_models()
